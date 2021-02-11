@@ -10,11 +10,19 @@ export function Menu(props) {
 			<div className="subtitle-container text-center">
 				<h3>Pick A Weapon </h3>
 			</div>
-			<PickWeapon handleChangeView={props.handleChangeView} />
+			<PickWeapon
+				handleChangeView={props.handleChangeView}
+				players={props.players}
+				handleChangePlayers={props.handleChangePlayers}
+				setFirst={props.setFirst}
+			/>
 		</div>
 	);
 }
 
 Menu.propTypes = {
-	handleChangeView: PropTypes.func
+	handleChangeView: PropTypes.func,
+	players: PropTypes.object,
+	handleChangePlayers: PropTypes.func,
+	setFirst: PropTypes.func
 };

@@ -2,32 +2,70 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export function PickWeapon(props) {
+	function handleChangePlayer(e) {
+		let newPlayers = {
+			[e.target.name]: e.target.value
+		};
+		props.handleChangePlayers(newPlayers);
+	}
 	return (
-		<div className="p-5">
+		<div className="p-lg-5 p-md-4 p-sm-1">
 			<div className="pickWeapon-container p-4">
 				<div className="pickWeapon-title-container text-center">
 					<h3>CHOOSE YOUR WEAPON</h3>
 				</div>
 				<div className="inputUsername-container d-flex justify-content-center">
 					<div>
-						<input placeholder="Player 1 username"></input>
+						<h4>{props.players.player1}</h4>
+						<input
+							name="player1"
+							placeholder="Player 1 username"
+							onChange={handleChangePlayer}
+						/>
 					</div>
 					<div>
-						<input placeholder="Player 2 username"></input>
+						<h4>{props.players.player2}</h4>
+						<input
+							name="player2"
+							placeholder="Player 2 username"
+							onChange={handleChangePlayer}
+						/>
 					</div>
 				</div>
-				<div className="selectStart-container col-5 bg-primary d-flex justify-content-between">
+				<div className="selectStart-container d-flex justify-content-center">
 					<div>
 						<button
-							className="btnWeapon"
-							onClick={() => props.handleChangeView("game")}>
+							style={{ color: "#e2cf77" }}
+							className="btnWeapon m-2"
+							onClick={() => {
+								if (
+									props.players.player1 != "" &&
+									props.players.player2 != ""
+								) {
+									props.handleChangeView("game");
+									props.setFirst("X");
+								} else {
+									alert("Debe llenar todos los campos");
+								}
+							}}>
 							X
 						</button>
 					</div>
 					<div>
 						<button
-							className="btnWeapon"
-							onClick={() => props.handleChangeView("game")}>
+							style={{ color: "#3da4cc" }}
+							className="btnWeapon m-2"
+							onClick={() => {
+								if (
+									props.players.player1 != "" &&
+									props.players.player2 != ""
+								) {
+									props.handleChangeView("game");
+									props.setFirst("O");
+								} else {
+									alert("Debe llenar todos los campos");
+								}
+							}}>
 							O
 						</button>
 					</div>
@@ -38,5 +76,8 @@ export function PickWeapon(props) {
 }
 
 PickWeapon.propTypes = {
-	handleChangeView: PropTypes.func
+	handleChangeView: PropTypes.func,
+	players: PropTypes.object,
+	handleChangePlayers: PropTypes.func,
+	setFirst: PropTypes.func
 };

@@ -9,14 +9,6 @@ body{
     padding: 0%;
 }
 
-divv{
-    border: 2px solid red;
-}
-
-.ticTacToee{
-    
-}
-
 .btn-container{
     border-color: rgba(99,96,93,255)!important;
 }
@@ -44,4 +36,17 @@ input{
 .btnWeapon{
     width: 80px;
     font-size:  50px;
+    background-color: transparent;
+    font-weight: bold;
+    border: none;
+    padding-bottom: 5px;
+    background-color: rgba(62,57,51,255);
+}
+
+.winnerX{
+    color: #e2cf77 !important;
+}
+
+.winnerO{
+    color: #3da4cc !important;
 }
